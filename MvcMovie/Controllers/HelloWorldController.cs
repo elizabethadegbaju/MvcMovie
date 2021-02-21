@@ -2,19 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace MvcMovie.Controllers
 {
     public class HelloWorldController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is the welcome default action...";
+            return View();
         }
-        public string Welcome()
+        public IActionResult Welcome(string name, int numtimes = 1)
         {
-            return "This is the welcome action method!";
+            ViewData["Message"] = $"Hello, {name}! Welcome to Elizabeth's Movie App";
+            ViewData["NumTimes"] = numtimes;
+            return View();
         }
     }
 }
